@@ -1,0 +1,23 @@
+[EXEC]
+-- auto-generated definition
+create table tblSMSTemplateCategory_Item
+(
+    DBID       bigint identity
+        constraint PK_tblSMSTemplateCategory_item
+            primary key,
+    CategoryID nvarchar(50),
+    itemID     nvarchar(50),
+    Sort       nvarchar(50),
+    constraint UQ_CategoryID_ItemID
+        unique (CategoryID, itemID)
+)
+go
+
+exec sp_addextendedproperty 'MS_Description', N'簡訊範本目錄項目 關聯表', 'SCHEMA', 'dbo', 'TABLE',
+     'tblSMSTemplateCategory_Item'
+go
+
+[ROLLBACK]
+DROP TABLE tblSMSTemplateCategory_Item;
+
+

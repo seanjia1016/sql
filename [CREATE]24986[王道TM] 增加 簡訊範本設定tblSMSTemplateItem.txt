@@ -1,0 +1,28 @@
+[EXEC]
+-- auto-generated definition
+create table tblSMSTemplateItem
+(
+    DBID           bigint identity
+        constraint PK_tblSMSTemplateitem
+            primary key,
+    Subject        nvarchar(1000),
+    Content        nvarchar(max),
+    Status         nvarchar(50),
+    DeleteFlag     nvarchar(50) default 'N',
+    CreatePersonID nvarchar(50),
+    CreateTime     datetime     default getdate(),
+    ModifyPersonID nvarchar(50),
+    ModifyTime     datetime
+)
+go
+
+exec sp_addextendedproperty 'MS_Description', N'簡訊範本項目 設定表', 'SCHEMA', 'dbo', 'TABLE', 'tblSMSTemplateItem'
+go
+
+
+
+
+[ROLLBACK]
+DROP TABLE tblSMSTemplateItem;
+
+
